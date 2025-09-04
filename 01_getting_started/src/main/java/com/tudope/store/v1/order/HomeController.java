@@ -1,4 +1,4 @@
-package com.tudope.store;
+package com.tudope.store.v1.order;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;

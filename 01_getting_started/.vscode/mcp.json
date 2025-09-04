@@ -1,0 +1,8 @@
+{
+  "servers": {
+    "spring-framework Docs": {
+      "type": "sse",
+      "url": "https://gitmcp.io/spring-projects/spring-framework"
+    }
+  }
+}

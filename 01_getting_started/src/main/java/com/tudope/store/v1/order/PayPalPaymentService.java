@@ -1,6 +1,4 @@
-package com.tudope.store;
-
-import org.springframework.stereotype.Service;
+package com.tudope.store.v1.order;
 
 // @Service("paypal")
 public class PayPalPaymentService implements PaymentServiceSpec {

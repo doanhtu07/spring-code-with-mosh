@@ -1,11 +1,11 @@
-package com.tudope.store;
+package com.tudope.store.v1.order;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class AppConfig {
+public class OrderConfig {
     @Value("${payment-service.type:stripe}")
     private String paymentServiceType;
 

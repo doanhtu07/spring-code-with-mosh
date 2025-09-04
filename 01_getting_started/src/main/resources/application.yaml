@@ -1,9 +1,17 @@
 spring:
   application:
     name: store
+  datasource:
+    url: jdbc:mysql://localhost:3306/store?createDatabaseIfNotExist=true
+    username: root
+    password:
 
 payment-service:
   type: stripe
+
+email-service:
+  host: https://best-email.com
+  port: 587
 
 stripe:
   api-url: https://api.stripe.com

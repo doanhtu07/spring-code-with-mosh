@@ -1,4 +1,4 @@
-package com.tudope.store.notification;
+package com.tudope.store.v1.notification;
 
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
