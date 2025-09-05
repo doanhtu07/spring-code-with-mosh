@@ -2,7 +2,7 @@ package com.tudope.store;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.tudope.store.entities.Tag;
+import com.tudope.store.entities.Profile;
 import com.tudope.store.entities.User;
 
 @SpringBootApplication
@@ -14,11 +14,11 @@ public class StoreApplication {
 				.password("password123")
 				.build();
 
-		var tag = Tag.builder()
-				.name("tag1")
+		var profile = Profile.builder()
+				.bio("bio")
 				.build();
 
-		user.addTag(tag);
+		user.setProfile(profile);
 
 		System.out.println(user);
 	}
