@@ -1,6 +1,8 @@
 package com.tudope.store.entities;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,6 +10,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -26,13 +30,17 @@ public class Product {
   @Column(nullable = false, name = "name")
   private String name;
 
-  @Column(nullable = false, name = "price")
+  @Column(nullable = false, precision = 10, scale = 2, name = "price")
   private BigDecimal price;
 
-  @Column(nullable = true, name = "category_id")
+  @Column(nullable = true, insertable = false, updatable = false, name = "category_id")
   private byte categoryId;
 
   @ManyToOne
   @JoinColumn(name = "category_id")
   private Category category;
+
+  @ManyToMany
+  @JoinTable(name = "wishlists", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+  private Set<User> wishlistUsers = new HashSet<>();
 }

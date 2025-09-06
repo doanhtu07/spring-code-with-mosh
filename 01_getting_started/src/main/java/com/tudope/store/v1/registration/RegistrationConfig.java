@@ -6,12 +6,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RegistrationConfig {
     @Bean
-    public UserService userService() {
-        return new UserService(userRepository(), notificationService());
+    public UserService userServiceV1() {
+        return new UserService(userRepositoryV1(), notificationService());
     }
 
     @Bean
-    public UserRepositorySpec userRepository() {
+    public UserRepositorySpec userRepositoryV1() {
         return new InMemoryUserRepository();
     }
 

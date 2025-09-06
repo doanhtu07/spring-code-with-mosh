@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -44,7 +45,7 @@ public class User {
     @Column(nullable = false, name = "password")
     private String password;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, orphanRemoval = true)
     @Builder.Default
     private List<Address> addresses = new ArrayList<>();
 
@@ -72,11 +73,15 @@ public class User {
         tag.getUsers().remove(this);
     }
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
     private Profile profile;
 
     public void setProfile(Profile profile) {
         this.profile = profile;
         profile.setUser(this);
     }
+
+    @ManyToMany(mappedBy = "wishlistUsers")
+    @Builder.Default
+    private Set<Product> wishlistProducts = new HashSet<>();
 }

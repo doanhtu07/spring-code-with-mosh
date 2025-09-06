@@ -1,25 +1,16 @@
 package com.tudope.store;
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
-import com.tudope.store.entities.Profile;
-import com.tudope.store.entities.User;
+import com.tudope.store.services.UserService;
 
 @SpringBootApplication
 public class StoreApplication {
 	public static void main(String[] args) {
-		var user = User.builder()
-				.name("John Doe")
-				.email("john.doe@example.com")
-				.password("password123")
-				.build();
-
-		var profile = Profile.builder()
-				.bio("bio")
-				.build();
-
-		user.setProfile(profile);
-
-		System.out.println(user);
+		ConfigurableApplicationContext context = SpringApplication.run(StoreApplication.class, args);
+		var userService = context.getBean(UserService.class);
+		userService.deleteRelated();
 	}
 }

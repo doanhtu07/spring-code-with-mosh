@@ -2,6 +2,7 @@ package com.tudope.store.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -41,10 +42,10 @@ public class Address {
     @Column(nullable = true, name = "state")
     private String state;
 
-    @Column(nullable = false, name = "user_id")
+    @Column(nullable = false, insertable = false, updatable = false, name = "user_id")
     private Long userId;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     @ToString.Exclude
     private User user;
